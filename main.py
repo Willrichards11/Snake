@@ -2,6 +2,7 @@ import pygame
 from components.snake import Snake
 from components.food import Food
 from collide import collision
+from drawsnake import drawsnake
 
 
 def main():
@@ -26,23 +27,14 @@ def main():
         strokes = pygame.key.get_pressed()
 
         snake.move(strokes)
-
-
         window.fill((0, 0, 0))
 
-        pygame.draw.rect(
-            window,
-            (255, 0, 0),
-            (snake.x, snake.y, snake.width, snake.height)
-        )
+        drawsnake(window, snake)
 
         if (collision(snake, food)):
-            print (snake.x, food.x)
-            print (snake.y, food.y)
-
-            print ("collide")
-
             food = Food()
+            snake.grow()
+
 
         pygame.draw.rect(
             window,

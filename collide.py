@@ -1,2 +1,3 @@
 def collision(snake, food):
-    return (abs(snake.x - food.x < 5)) and (abs(snake.y - food.y) < 5)
+    # record collision if within 5 units
+    return (abs(snake.x[0] - food.x < 5)) and (abs(snake.y[0] - food.y) < 5)
