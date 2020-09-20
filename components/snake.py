@@ -21,4 +21,3 @@ class Snake:
 
         if strokes[pygame.K_DOWN]:
             self.y += self.vel
-

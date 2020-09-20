@@ -1,5 +1,7 @@
 import pygame
 from components.snake import Snake
+from components.food import Food
+from collide import collision
 
 
 def main():
@@ -10,9 +12,11 @@ def main():
     pygame.display.set_caption("Snake")
 
     snake = Snake()
+    food = Food()
     game = True
 
     while game is True:
+
         pygame.time.delay(100)
 
         for event in pygame.event.get():
@@ -20,16 +24,32 @@ def main():
                 game = False
 
         strokes = pygame.key.get_pressed()
-        print (snake.x)
+
         snake.move(strokes)
-        print (snake.x)
+
 
         window.fill((0, 0, 0))
+
         pygame.draw.rect(
             window,
             (255, 0, 0),
             (snake.x, snake.y, snake.width, snake.height)
         )
+
+        if (collision(snake, food)):
+            print (snake.x, food.x)
+            print (snake.y, food.y)
+
+            print ("collide")
+
+            food = Food()
+
+        pygame.draw.rect(
+            window,
+            (0, 0, 255),
+            (food.x, food.y, food.width, food.height)
+        )
+
         pygame.display.update()
 
 
