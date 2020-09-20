@@ -19,6 +19,11 @@ def main():
             if event.type == pygame.QUIT:
                 game = False
 
+        strokes = pygame.key.get_pressed()
+        print (snake.x)
+        snake.move(strokes)
+        print (snake.x)
+
         window.fill((0, 0, 0))
         pygame.draw.rect(
             window,
