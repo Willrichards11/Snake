@@ -2,13 +2,13 @@ import pygame
 
 
 class Snake:
-    def __init__(self, x=[250], y=[250]):
-        self.width = 5
-        self.height = 5
+    def __init__(self, x=[250], y=[250], lastmove="u"):
+        self.width = 15
+        self.height = 15
         self.x = x
         self.y = y
         self.vel = 5
-        self.lastmove = "u"
+        self.lastmove = lastmove
 
     def setdir(self, strokes):
         if strokes[pygame.K_LEFT]:
@@ -25,7 +25,13 @@ class Snake:
 
     def move(self):
         if self.lastmove == "l":
-            self.x = [pos - self.vel for pos in self.x]
+            import pdb; pdb.set_trace()
+            head = [self.x[0] - self.vel]
+            body = self.x[1:]
+            del body[-1]
+
+            self.x = head + body
+
 
         if self.lastmove == "r":
             self.x = [pos + self.vel for pos in self.x]
