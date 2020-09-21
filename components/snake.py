@@ -10,19 +10,32 @@ class Snake:
         self.vel = 5
         self.lastmove = "u"
 
-    def move(self, strokes):
+    def setdir(self, strokes):
         if strokes[pygame.K_LEFT]:
-            self.x = [pos - self.vel for pos in self.x]
+            self.lastmove = "l"
 
         if strokes[pygame.K_RIGHT]:
-            self.x = [pos + self.vel for pos in self.x]
+            self.lastmove = "r"
 
         if strokes[pygame.K_UP]:
-
-            self.y = [pos - self.vel for pos in self.y]
+            self.lastmove = "u"
 
         if strokes[pygame.K_DOWN]:
+            self.lastmove = "d"
+
+    def move(self):
+        if self.lastmove == "l":
+            self.x = [pos - self.vel for pos in self.x]
+
+        if self.lastmove == "r":
+            self.x = [pos + self.vel for pos in self.x]
+
+        if self.lastmove == "u":
+            self.y = [pos - self.vel for pos in self.y]
+
+        if self.lastmove == "d":
             self.y = [pos + self.vel for pos in self.y]
+
 
     def checkEdges(self):
         hrztls = (self.x[0] > 500) or (self.x[0] < 0)

@@ -3,6 +3,7 @@ from components.snake import Snake
 from components.food import Food
 from collide import collision
 from drawsnake import drawsnake
+import time
 
 
 def main():
@@ -26,8 +27,9 @@ def main():
 
         strokes = pygame.key.get_pressed()
 
-        snake.move(strokes)
+        snake.setdir(strokes)
         window.fill((0, 0, 0))
+        snake.move()
 
         drawsnake(window, snake)
 
@@ -47,8 +49,18 @@ def main():
 
         pygame.display.update()
 
+    window.fill((0, 0, 0))
 
+    font = pygame.font.Font(None, 36)
+    text = font.render("Game Over", True, (255, 255, 255))
+    text_rect = text.get_rect()
+    text_x = window.get_width() / 2 - text_rect.width / 2
+    text_y = window.get_height() / 2 - text_rect.height / 2
+    window.blit(text, [text_x, text_y])
+    pygame.display.flip()
+    time.sleep(5)
     pygame.quit()
+
 
 if __name__ == "__main__":
     main()
