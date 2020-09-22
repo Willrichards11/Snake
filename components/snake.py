@@ -2,12 +2,12 @@ import pygame
 
 
 class Snake:
-    def __init__(self, x=[250], y=[250], lastmove="u"):
+    def __init__(self, x=[250, 250, 250], y=[250, 265, 280], lastmove="u"):
         self.width = 15
         self.height = 15
         self.x = x
         self.y = y
-        self.vel = 5
+        self.vel = 15
         self.lastmove = lastmove
 
     def setdir(self, strokes):
@@ -25,23 +25,31 @@ class Snake:
 
     def move(self):
         if self.lastmove == "l":
-            import pdb; pdb.set_trace()
-            head = [self.x[0] - self.vel]
-            body = self.x[1:]
-            del body[-1]
-
-            self.x = head + body
-
+            head_x = [self.x[0] - self.vel]
+            body_x = self.x[:-1]
+            head_y = [self.y[0]]
+            body_y = self.y[:-1]
 
         if self.lastmove == "r":
-            self.x = [pos + self.vel for pos in self.x]
+            head_x = [self.x[0] + self.vel]
+            body_x = self.x[:-1]
+            head_y = [self.y[0]]
+            body_y = self.y[:-1]
 
         if self.lastmove == "u":
-            self.y = [pos - self.vel for pos in self.y]
+            head_x = [self.x[0]]
+            body_x = self.x[:-1]
+            head_y = [self.y[0] - self.vel]
+            body_y = self.y[:-1]
 
         if self.lastmove == "d":
-            self.y = [pos + self.vel for pos in self.y]
+            head_x = [self.x[0]]
+            body_x = self.x[:-1]
+            head_y = [self.y[0] + self.vel]
+            body_y = self.y[:-1]
 
+        self.x = head_x + body_x
+        self.y = head_y + body_y
 
     def checkEdges(self):
         hrztls = (self.x[0] > 500) or (self.x[0] < 0)
