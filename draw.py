@@ -18,9 +18,9 @@ def drawFood(food, window):
     )
 
 
-def overscreen(window):
+def overscreen(window, score):
     font = pygame.font.Font(None, 36)
-    text = font.render("Game Over", True, (255, 255, 255))
+    text = font.render("Game Over: score = {}".format(score), True, (255, 255, 255))
     text_rect = text.get_rect()
     text_x = window.get_width() / 2 - text_rect.width / 2
     text_y = window.get_height() / 2 - text_rect.height / 2

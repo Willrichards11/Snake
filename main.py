@@ -8,6 +8,7 @@ import time
 
 def main():
     pygame.init()
+    score = 0
 
     window = pygame.display.set_mode((500, 500))
     pygame.display.set_caption("Snake")
@@ -30,20 +31,21 @@ def main():
         snake.move()
 
         drawsnake(window, snake)
-
+        # if collides with self or edge end game
         if snake.checkEdges() or snake.checkSelf():
             game = False
 
         if collision(snake, food):
             food.newloc(snake)
             snake.grow()
+            score += 1
 
         drawFood(food, window)
         pygame.display.update()
 
     window.fill((0, 0, 0))
 
-    overscreen(window)
+    overscreen(window, score)
     time.sleep(5)
     pygame.quit()
 
