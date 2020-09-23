@@ -16,8 +16,8 @@ class Food:
             self.x = numpy.random.randint(10, 490)
             self.y = numpy.random.randint(10, 490)
 
-            min_dist_x = min([self.x - val for val in snake.x])**2 < 15**2
-            min_dist_y = min([self.y - val for val in snake.y])**2 < 15**2
+            min_dist_x = min([self.x - val for val in snake.x])
+            min_dist_y = min([self.y - val for val in snake.y])
 
-            if not min_dist_x or not min_dist_y:
+            if min_dist_x**2 + min_dist_y**2 > 15**2:
                 cont = False
