@@ -2,7 +2,7 @@ import pygame
 from components.snake import Snake
 from components.food import Food
 from collide import collision
-from drawsnake import drawsnake
+from draw import drawsnake, drawFood, overscreen
 import time
 
 
@@ -36,28 +36,16 @@ def main():
         if snake.checkEdges():
             game = False
 
-        if (collision(snake, food)):
-            food = Food()
+        if collision(snake, food):
+            food.newloc()
             snake.grow()
 
-
-        pygame.draw.rect(
-            window,
-            (0, 0, 255),
-            (food.x, food.y, food.width, food.height)
-        )
-
+        drawFood(food, window)
         pygame.display.update()
 
     window.fill((0, 0, 0))
 
-    font = pygame.font.Font(None, 36)
-    text = font.render("Game Over", True, (255, 255, 255))
-    text_rect = text.get_rect()
-    text_x = window.get_width() / 2 - text_rect.width / 2
-    text_y = window.get_height() / 2 - text_rect.height / 2
-    window.blit(text, [text_x, text_y])
-    pygame.display.flip()
+    overscreen(window)
     time.sleep(5)
     pygame.quit()
 
