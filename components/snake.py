@@ -7,7 +7,7 @@ class Snake:
         self.height = 15
         self.x = x
         self.y = y
-        self.vel = 15
+        self.vel = 1
         self.lastmove = lastmove
 
     def setdir(self, strokes):
@@ -25,13 +25,13 @@ class Snake:
 
     def move(self):
         if self.lastmove == "l":
-            head_x = [self.x[0] - self.vel]
+            head_x = [self.x[0] - self.vel*15]
             body_x = self.x[:-1]
             head_y = [self.y[0]]
             body_y = self.y[:-1]
 
         if self.lastmove == "r":
-            head_x = [self.x[0] + self.vel]
+            head_x = [self.x[0] + self.vel*15]
             body_x = self.x[:-1]
             head_y = [self.y[0]]
             body_y = self.y[:-1]
@@ -39,16 +39,17 @@ class Snake:
         if self.lastmove == "u":
             head_x = [self.x[0]]
             body_x = self.x[:-1]
-            head_y = [self.y[0] - self.vel]
+            head_y = [self.y[0] - self.vel*15]
             body_y = self.y[:-1]
 
         if self.lastmove == "d":
             head_x = [self.x[0]]
             body_x = self.x[:-1]
-            head_y = [self.y[0] + self.vel]
+            head_y = [self.y[0] + self.vel*15]
             body_y = self.y[:-1]
 
         self.x = head_x + body_x
+        print(self.x)
         self.y = head_y + body_y
 
     def checkEdges(self):
@@ -57,9 +58,8 @@ class Snake:
         return hrztls or verts
 
     def checkSelf(self):
-        min_dist_x = min([self.x[0] - val for val in self.x[1:]])
-        min_dist_y = min([self.y[0] - val for val in self.y[1:]])
-        return min_dist_x ** 2 + min_dist_y ** 2 < 15**2
+
+        return (self.x[0], self.y[0]) in zip(self.x[1:], self.y[1:])
 
     def grow(self):
         self.x.append(self.x[-1] - 5)

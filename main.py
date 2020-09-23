@@ -20,7 +20,7 @@ def main():
 
     while start is False:
         startScreen(window)
-        pygame.time.delay(100)
+        pygame.time.delay(10)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
