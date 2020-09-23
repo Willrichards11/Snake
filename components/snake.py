@@ -52,8 +52,8 @@ class Snake:
         self.y = head_y + body_y
 
     def checkEdges(self):
-        hrztls = (self.x[0] > 500) or (self.x[0] < 0)
-        verts = (self.y[0] > 500) or (self.y[0] < 0)
+        hrztls = (self.x[0] > 492.5) or (self.x[0] < 7.5)
+        verts = (self.y[0] > 492.5) or (self.y[0] < 7.5)
         return hrztls or verts
 
     def checkSelf(self):

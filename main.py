@@ -21,7 +21,6 @@ def main():
     while start is False:
         startScreen(window)
         pygame.time.delay(100)
-        strokes = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
