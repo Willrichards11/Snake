@@ -31,7 +31,7 @@ def main():
 
         drawsnake(window, snake)
 
-        if snake.checkEdges():
+        if snake.checkEdges() or snake.checkSelf():
             game = False
 
         if collision(snake, food):

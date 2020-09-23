@@ -56,6 +56,10 @@ class Snake:
         verts = (self.y[0] > 500) or (self.y[0] < 0)
         return hrztls or verts
 
+    def checkSelf(self):
+        min_dist_x = min([self.x[0] - val for val in self.x[1:]])
+        min_dist_y = min([self.y[0] - val for val in self.y[1:]])
+        return min_dist_x ** 2 + min_dist_y ** 2 < 15**2
 
     def grow(self):
         self.x.append(self.x[-1] - 5)
