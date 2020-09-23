@@ -2,7 +2,7 @@ import pygame
 from components.snake import Snake
 from components.food import Food
 from collide import collision
-from draw import drawsnake, drawFood, overscreen
+from draw import drawsnake, drawFood, overScreen, startScreen
 import time
 
 
@@ -16,10 +16,19 @@ def main():
     snake = Snake()
     food = Food()
     game = True
+    start = False
+
+    while start is False:
+        startScreen(window)
+        pygame.time.delay(100)
+        strokes = pygame.key.get_pressed()
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    start = True
+                    window.fill((0, 0, 0))
 
     while game is True:
-
-        pygame.time.delay(100)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -42,10 +51,11 @@ def main():
 
         drawFood(food, window)
         pygame.display.update()
+        pygame.time.delay(100)
 
     window.fill((0, 0, 0))
 
-    overscreen(window, score)
+    overScreen(window, score)
     time.sleep(5)
     pygame.quit()
 
