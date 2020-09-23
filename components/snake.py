@@ -49,7 +49,6 @@ class Snake:
             body_y = self.y[:-1]
 
         self.x = head_x + body_x
-        print(self.x)
         self.y = head_y + body_y
 
     def checkEdges(self):
@@ -58,9 +57,8 @@ class Snake:
         return hrztls or verts
 
     def checkSelf(self):
-
         return (self.x[0], self.y[0]) in zip(self.x[1:], self.y[1:])
 
     def grow(self):
-        self.x.append(self.x[-1] - 5)
-        self.y.append(self.y[-1] - 5)
+        self.x.append(self.x[-1] - 15)
+        self.y.append(self.y[-1] - 15)
