@@ -7,7 +7,6 @@ import time
 
 
 def main():
-
     pygame.init()
 
     window = pygame.display.set_mode((500, 500))
@@ -26,7 +25,6 @@ def main():
                 game = False
 
         strokes = pygame.key.get_pressed()
-
         snake.setdir(strokes)
         window.fill((0, 0, 0))
         snake.move()
@@ -37,7 +35,7 @@ def main():
             game = False
 
         if collision(snake, food):
-            food.newloc()
+            food.newloc(snake)
             snake.grow()
 
         drawFood(food, window)
