@@ -1,0 +1,4 @@
+*.idea
+*pycache*
+*.DS*
+*.pyc
