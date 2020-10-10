@@ -27,6 +27,7 @@ def overScreen(window, score):
     window.blit(text, [text_x, text_y])
     pygame.display.flip()
 
+
 def startScreen(window):
     font = pygame.font.Font(None, 36)
     text = font.render("Press enter to start", True, (255, 255, 255))
