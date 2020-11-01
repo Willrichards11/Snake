@@ -2,9 +2,10 @@
 
 ## Installation
 
-Pygame can easily be installed via pip using the following command:
+Pygame and numpy can easily be installed via pip using the following command:
 
 `pip install pygame`
+`pip install numpy`
 
 ## Execution
 
