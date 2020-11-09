@@ -57,7 +57,7 @@ def main():
 
         overScreen(window, score)
         time.sleep(5)
-        
+
     pygame.quit()
 
 

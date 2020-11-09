@@ -3,19 +3,11 @@ import pygame
 
 def drawsnake(window, snake):
     for i, j in zip(snake.x, snake.y):
-        pygame.draw.rect(
-            window,
-            (255, 0, 0),
-            (i, j, snake.width, snake.height)
-        )
+        pygame.draw.rect(window, (255, 0, 0), (i, j, snake.width, snake.height))
 
 
 def drawFood(food, window):
-    pygame.draw.rect(
-        window,
-        (0, 0, 255),
-        (food.x, food.y, food.width, food.height)
-    )
+    pygame.draw.rect(window, (0, 0, 255), (food.x, food.y, food.width, food.height))
 
 
 def overScreen(window, score):

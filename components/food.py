@@ -19,5 +19,5 @@ class Food:
             min_dist_x = min([self.x - val for val in snake.x])
             min_dist_y = min([self.y - val for val in snake.y])
 
-            if min_dist_x**2 + min_dist_y**2 > 15**2:
+            if min_dist_x ** 2 + min_dist_y ** 2 > 15 ** 2:
                 cont = False

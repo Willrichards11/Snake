@@ -25,13 +25,13 @@ class Snake:
 
     def move(self):
         if self.lastmove == "l":
-            head_x = [self.x[0] - self.vel*15]
+            head_x = [self.x[0] - self.vel * 15]
             body_x = self.x[:-1]
             head_y = [self.y[0]]
             body_y = self.y[:-1]
 
         if self.lastmove == "r":
-            head_x = [self.x[0] + self.vel*15]
+            head_x = [self.x[0] + self.vel * 15]
             body_x = self.x[:-1]
             head_y = [self.y[0]]
             body_y = self.y[:-1]
@@ -39,13 +39,13 @@ class Snake:
         if self.lastmove == "u":
             head_x = [self.x[0]]
             body_x = self.x[:-1]
-            head_y = [self.y[0] - self.vel*15]
+            head_y = [self.y[0] - self.vel * 15]
             body_y = self.y[:-1]
 
         if self.lastmove == "d":
             head_x = [self.x[0]]
             body_x = self.x[:-1]
-            head_y = [self.y[0] + self.vel*15]
+            head_y = [self.y[0] + self.vel * 15]
             body_y = self.y[:-1]
 
         self.x = head_x + body_x
